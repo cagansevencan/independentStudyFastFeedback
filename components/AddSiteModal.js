@@ -41,7 +41,6 @@ const AddSiteModal = () => {
                         <FormControl>
                             <FormLabel>Name</FormLabel>
                             <Input
-                                ref={initialRef}
                                 placeholder="My site"
                                 name="site"
                                 ref={register({

@@ -3,6 +3,7 @@ import {
     Box,
     Heading,
     Button,
+    Text
 } from '@chakra-ui/core';
 
 import DashboardShell from './DashboardShell';
