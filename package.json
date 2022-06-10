@@ -7,6 +7,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
+    "emotion-theming": "^10.0.27",
     "firebase": "7.14.6",
     "next": "12.1.4",
     "react": "18.0.0",
