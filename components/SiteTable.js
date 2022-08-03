@@ -15,7 +15,7 @@ const SiteData = ({ site }) => (
             {site.url}
         </Td>
         <Td>
-            <NextLink href="/p/[siteId]" as={`/p/${site.id}`}   >
+            <NextLink href="/p/[siteId]" as={`/p/${site.id}`} passHref >
                 <Link>View Feedback</Link>
             </NextLink>
         </Td>
