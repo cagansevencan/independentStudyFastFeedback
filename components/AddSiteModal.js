@@ -19,7 +19,7 @@ import {
 import { createSite } from '@/lib/db';
 import { useAuth } from '@/lib/auth';
 import { mutate } from 'swr';
-import fetcher from '@/utils/fetcher';
+
 
 const AddSiteModal = ({ children }) => {
     const initialRef = useRef();
@@ -48,10 +48,11 @@ const AddSiteModal = ({ children }) => {
         })
         //API will return sites, and that's the array so spread the rest of the sites and include the new site
 
-        mutate('/api/sites', async (data) => {
-
-            return { sites: [...data.sites, newSite] };
-        }, false)
+        mutate(
+            ['/api/sites', auth.user.token],
+            async (data) => {
+                return { sites: [...data.sites, newSite] };
+            }, false)
         onClose();
     };
 

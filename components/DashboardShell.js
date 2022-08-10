@@ -17,6 +17,8 @@ import AddSiteModal from './AddSiteModal';
 
 const DashboardShell = ({ children }) => {
     const { user, signout } = useAuth();
+    const picture = user?.photoURL;
+
 
     return (
         <Box backgroundColor="gray.100" h="100vh">
@@ -41,7 +43,7 @@ const DashboardShell = ({ children }) => {
                         {user && (<Button variant="ghost" mr={2} onClick={() => signout()}>
                             Log Out
                         </Button>)}
-                        <Avatar size="sm" src={user?.photoUrl} />
+                        <Avatar size="sm" name={user?.name} src={picture} />
                     </Flex>
                 </Flex>
             </Flex>

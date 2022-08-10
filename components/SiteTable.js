@@ -6,7 +6,6 @@ import NextLink from 'next/link';
 
 
 const SiteData = ({ site }) => (
-    console.log("This is site: ", site),
     <Box as="tr" key={site.url}>
         <Td fontWeight="medium">
             {site.name}

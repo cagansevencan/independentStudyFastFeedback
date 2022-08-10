@@ -11,8 +11,9 @@ import SiteTable from '@/components/SiteTable'
 
 
 const Dashboard = () => {
-    const auth = useAuth()
-    const { data } = useSWR('/api/sites', fetcher)
+    const { user } = useAuth()
+    // Include the token alongside the request, so that our API route also has access to that info.
+    const { data } = useSWR(user ? ['/api/sites', user.token] : null, fetcher)
     //Fetcher that we want to fetch with - SWR leaves it up to us. We can do REST, GraphQL, etc.
     //We are gonna use a basic fetcher to return JSON.
 
@@ -23,7 +24,7 @@ const Dashboard = () => {
         </DashboardShell>
     }
 
-    if (!auth.user) {
+    if (!user) {
         return <DashboardShell>
             <SiteTableSkeleton />
         </DashboardShell>
