@@ -2,6 +2,7 @@ import { getUserFeedback } from "@/lib/db-admin";
 import { auth } from "@/lib/firebase-admin";
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     try {
         //We have our token on the header and we will use that to verify our connection with firebase
