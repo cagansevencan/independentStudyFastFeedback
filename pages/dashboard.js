@@ -33,6 +33,7 @@ const Dashboard = () => {
     }
 
     //This is the empty state that we want to show when the user is not signed in
+
     return <DashboardShell>
         <SiteTableHeader />
         {data.sites ? <SiteTable sites={data.sites} /> : <EmptyState />}
