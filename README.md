@@ -1,14 +1,29 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+## System Requirements
+Node.js 10.13 or later
+MacOS, Windows (including WSL), and Linux are supported
+
 ## Getting Started
 
 First, run the development server:
 
+
+
 ```bash
-npm run dev
-# or
-yarn dev
+$ git clone https://github.com/cagansevencan/independentStudyFastFeedback
+$ cd independentStudyFastFeedback
+$ yarn
+$ yarn dev
 ```
+
+
+- dev - Runs next which starts Next.js in development mode.
+
+- build - Runs next build which builds the application for production usage.
+
+- start - Runs next start which starts a Next.js production server.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
