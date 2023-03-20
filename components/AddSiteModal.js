@@ -38,7 +38,8 @@ const AddSiteModal = ({ children }) => {
             name,
             url
         }
-        createSite(newSite);
+        //This is gonna a return a site as an object, we can destructure and pull of the id
+        const { id } = createSite(newSite);
         toast({
             title: 'Success!',
             description: "We've added your site.",
@@ -50,9 +51,11 @@ const AddSiteModal = ({ children }) => {
 
         mutate(
             ['/api/sites', auth.user.token],
-            async (data) => {
-                return { sites: [...data.sites, newSite] };
-            }, false)
+            //Implicit return with an error function
+            async (data) => ({
+                sites: [...data.sites, { id, ...newSite }]
+            }),
+            false);
         onClose();
     };
 

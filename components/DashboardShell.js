@@ -34,7 +34,7 @@ const DashboardShell = ({ children }) => {
                     h="auto"
                 >
                     <Flex>
-                        <NextLink href='/'>
+                        <NextLink href='/' passHref>
                             <Icon name="logo" size="24px" mr={8} />
                         </NextLink>
 
