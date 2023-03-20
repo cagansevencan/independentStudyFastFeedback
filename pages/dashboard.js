@@ -8,7 +8,7 @@ import SiteTableSkeleton from '@/components/SiteTableSkeleton'
 import DashboardShell from '@/components/DashboardShell'
 import fetcher from '@/utils/fetcher'
 import SiteTable from '@/components/SiteTable'
-import SiteTableHeader from '@/components/FeedbackTableHeader'
+import SiteTableHeader from '@/components/SiteTableHeader'
 
 
 const Dashboard = () => {

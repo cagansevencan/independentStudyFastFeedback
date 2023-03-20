@@ -1,4 +1,4 @@
-import React from 'react';
+import NextLink from 'next/link';
 import {
     Box,
     Breadcrumb,
@@ -13,7 +13,6 @@ import {
 } from '@chakra-ui/core';
 
 import { useAuth } from '@/lib/auth';
-import AddSiteModal from './AddSiteModal';
 
 const DashboardShell = ({ children }) => {
     const { user, signout } = useAuth();
@@ -35,9 +34,17 @@ const DashboardShell = ({ children }) => {
                     h="auto"
                 >
                     <Flex>
-                        <Icon name="logo" size="24px" mr={8} />
-                        <Link mr={4}>Sites</Link>
-                        <Link>Feedback</Link>
+                        <NextLink href='/'>
+                            <Icon name="logo" size="24px" mr={8} />
+                        </NextLink>
+
+                        <NextLink href='/dashboard' passHref>
+                            <Link mr={4}>Sites</Link>
+                        </NextLink>
+
+                        <NextLink href='/feedback' passHref>
+                            <Link>Feedback</Link>
+                        </NextLink>
                     </Flex>
                     <Flex justifyContent="center" alignItems="center">
                         {user && (<Button variant="ghost" mr={2} onClick={() => signout()}>

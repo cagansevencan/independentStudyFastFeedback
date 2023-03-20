@@ -1,24 +1,8 @@
 import React from 'react';
-import { Box, Code, Switch } from '@chakra-ui/core';
+import { Box, Code, Switch, IconButton } from '@chakra-ui/core';
 import { Table, Tr, Th, Td } from './Table';
+import RemoveButton from './RemoveButton';
 
-
-const FeedbackData = ({ feedback }) => (
-    <Box as="tr" key={feedback.id}>
-        <Td fontWeight="medium">
-            {feedback.name}
-        </Td>
-        <Td>
-            {feedback.text}
-        </Td>
-        <Td>
-            <Code>{'/'}</Code>
-        </Td>
-        <Td>
-            {'Remove'}
-        </Td>
-    </Box>
-);
 
 
 const FeedbackTable = (props) => {
@@ -30,6 +14,7 @@ const FeedbackTable = (props) => {
                     <Th>Feedback</Th>
                     <Th>Route</Th>
                     <Th>Visible</Th>
+                    <Th>Delete</Th>
                     <Th width="50px">{''}</Th>
                 </Tr>
             </thead>
@@ -48,7 +33,7 @@ const FeedbackTable = (props) => {
                             />
                         </Td>
                         <Td>
-                            {/* <DeleteFeedbackButton feedbackId={feedback.id} /> */}
+                            <RemoveButton feedbackId={feedback.id} />
                         </Td>
                     </Box>
                 ))}
@@ -57,27 +42,5 @@ const FeedbackTable = (props) => {
     );
 };
 
-
-
-// const FeedbackTable = ({ allFeedback }) => {
-//     return (
-//         <Table>
-//             <thead>
-//                 <Tr>
-//                     <Th>Name</Th>
-//                     <Th>Feedback</Th>
-//                     <Th>Route</Th>
-//                     <Th>Visible</Th>
-//                     <Th>{''}</Th>
-//                 </Tr>
-//             </thead>
-//             <tbody>
-//                 {allFeedback.map((feedback) => (
-//                     <FeedbackData feedback={feedback} key={feedback.id} />
-//                 ))}
-//             </tbody>
-//         </Table>
-//     );
-// };
 
 export default FeedbackTable;

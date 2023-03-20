@@ -13,12 +13,13 @@ const GlobalStyle = ({ children }) => {
         
           ::selection{
           background-color: #47a3f3
-          color: #fefefe;
+          color: #000000;
           }
 
           html {
             min-width: 360px;
             scroll-behavior: smooth;
+            background-color: #edf2f7;
           }
           #__next {
             display: flex;

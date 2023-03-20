@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Button, ButtonGroup, Heading, Text, Code, Icon, Link, Flex } from '@chakra-ui/core'
+import { Button, Heading, Text, Icon, Flex, Stack } from '@chakra-ui/core'
 
 import { useAuth } from '@/lib/auth'
 
@@ -29,13 +29,13 @@ export default function Home() {
         <title>Fast Feedback</title>
       </Head>
 
-      <Heading>
+      <Heading marginBottom={"20px"}>
         Fast Feedback
       </Heading>
 
-      <Icon name="logo" size="42px" mb={2} />
+      <Icon name="logo" size="54px" mb={2} />
 
-      <Text textAlign={"center"} mb={4}>
+      <Text textAlign={"center"} mb={"1rem"} fontSize="lg" p={4}>
         <Text as="span" fontWeight="bold" display="inline">
           Fast Feedback
         </Text>
@@ -43,11 +43,52 @@ export default function Home() {
       </Text>
 
       {auth.user ? (
-        <Button as="a" fontWeight={"medium"} href="/dashboard">
+
+        <Button
+          as="a" fontWeight={"medium"} href="/dashboard"
+          backgroundColor="gray.900"
+          _hover={{ bg: "gray.700" }}
+          color="white"
+          _active={{
+            bg: "gray.800",
+            transform: "scale(0.70)"
+          }}
+        >
           View Dashboard
         </Button>
+
       ) : (
-        <Button mt={4} size="sm" onClick={(e) => auth.signinWithGithub()} >Sign In</Button>
+        <Stack>
+          <Button
+            leftIcon={"github"}
+            mt={4} size="lg" onClick={(e) => auth.signinWithGithub()}
+            backgroundColor="gray.900"
+            _hover={{ bg: "gray.700" }}
+            color="white"
+            _active={{
+              bg: "gray.800",
+              transform: "scale(0.70)"
+            }}
+          >
+            Sign In with Github
+          </Button>
+
+          <Button
+            leftIcon={"google"}
+            mt={4} size="lg" onClick={(e) => auth.signinWithGoogle()}
+            backgroundColor="white"
+            _hover={{ bg: "gray.100" }}
+            color="gray.900"
+            variant='outline'
+            _active={{
+              bg: "gray.100",
+              transform: "scale(0.70)"
+            }}
+          >
+            Sign In with Google
+          </Button>
+
+        </Stack>
       )}
 
     </Flex>
