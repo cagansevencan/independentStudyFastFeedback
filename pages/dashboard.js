@@ -18,7 +18,7 @@ const Dashboard = () => {
     //Fetcher that we want to fetch with - SWR leaves it up to us. We can do REST, GraphQL, etc.
     //We are gonna use a basic fetcher to return JSON.
 
-    //If no data return the loading stat e
+    //If no data return the loading state
     if (!data) {
         return <DashboardShell>
             <SiteTableHeader />
@@ -36,7 +36,7 @@ const Dashboard = () => {
 
     return <DashboardShell>
         <SiteTableHeader />
-        {data.sites ? <SiteTable sites={data.sites} /> : <EmptyState />}
+        {data.sites.length ? <SiteTable sites={data.sites} /> : <EmptyState />}
     </DashboardShell>
 }
 
