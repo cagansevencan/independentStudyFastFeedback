@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Box, FormControl, FormLabel, Input, FormHelperText, Button } from '@chakra-ui/core';
 
 import { useAuth } from "@/lib/auth";
@@ -35,13 +35,14 @@ export async function getStaticPaths() {
     //It will infer a key of paths, and value of params
     return {
         paths,
-        fallback: false
+        fallback: true
     }
 }
 
 const SiteFeedback = ({ initialFeedback }) => {
     const auth = useAuth();
     const router = useRouter();
+    const inputEl = useRef(null);
     const [allFeedback, setAllFeedback] = useState(initialFeedback);
 
     const onSubmit = (e) => {
@@ -52,11 +53,12 @@ const SiteFeedback = ({ initialFeedback }) => {
             author: auth.user.name,
             authorID: auth.user.uid,
             siteId: router.query.siteId,
-            text: e.target.elements.comment.value,
+            text: inputEl.current.value,
             createdAt: new Date().toISOString(),
             provider: auth.user.provider,
             status: "pending"
         }
+        inputEl.current.value = '';
         setAllFeedback([newFeedback, ...allFeedback]);
         //Save to db
         //Doing it on client side
@@ -71,18 +73,20 @@ const SiteFeedback = ({ initialFeedback }) => {
             <Box as="form" onSubmit={onSubmit}>
                 <FormControl my={8}>
                     <FormLabel htmlFor="comment">Comment</FormLabel>
-                    <Input type='comment' id="comment" />
-                    <Button mt={2} type="submit" fontWeight={"medium"}>
+                    <Input ref={inputEl} type='comment' id="comment" />
+                    <Button mt={2} type="submit" fontWeight={"medium"}
+                        isDisabled={router.isFallback}
+                    >
                         Add Comment
                     </Button>
                     <FormHelperText>Leave a comment!  </FormHelperText>
                 </FormControl>
             </Box>
 
-            {allFeedback.map((feedback) => (
-
-                <Feedback key={feedback.id} {...feedback} />
-            ))}
+            {allFeedback &&
+                allFeedback.map((feedback) => (
+                    <Feedback key={feedback.id} {...feedback} />
+                ))}
         </Box>
     )
 }

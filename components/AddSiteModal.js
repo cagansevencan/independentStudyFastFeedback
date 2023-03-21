@@ -53,7 +53,7 @@ const AddSiteModal = ({ children }) => {
             ['/api/sites', auth.user.token],
             //Implicit return with an error function
             async (data) => ({
-                sites: [...data.sites, { id, ...newSite }]
+                sites: [{ id, ...newSite }, ...data.sites]
             }),
             false);
         onClose();
