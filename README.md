@@ -18,6 +18,20 @@ $ yarn
 $ yarn dev
 ```
 
+## Environment Variables
+
+You need to create a .env.local file in the root of the project and add the following variables:
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+FIREBASE_CLIENT_EMAIL=
+FIREBASE_PRIVATE_KEY=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+LOGFLARE_API_KEY=
+LOGFLARE_SOURCE_TOKEN=
+```
+
 
 - dev - Runs next which starts Next.js in development mode.
 
