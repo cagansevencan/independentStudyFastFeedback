@@ -26,13 +26,13 @@ const Dashboard = () => {
         </DashboardShell>
     }
 
+
+    //This is the empty state that we want to show when the user is not signed in
     if (!user) {
         return <DashboardShell>
             <SiteTableSkeleton />
         </DashboardShell>
     }
-
-    //This is the empty state that we want to show when the user is not signed in
 
     return <DashboardShell>
         <SiteTableHeader />
