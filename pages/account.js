@@ -7,11 +7,11 @@ import EmptyState from '@/components/EmptyState'
 import SiteTableSkeleton from '@/components/SiteTableSkeleton'
 import DashboardShell from '@/components/DashboardShell'
 import fetcher from '@/utils/fetcher'
-import { createCheckoutSession } from '@/lib/db'
+import { createCheckoutSession, goToBillingPortal } from '@/lib/db'
 
 
 const Account = () => {
-    const { user } = useAuth()
+    const { user, signout } = useAuth()
     // const { data } = useSWR(user ? ['/api/user', user.token] : null, fetcher)
 
 
@@ -27,8 +27,7 @@ const Account = () => {
     return <DashboardShell>
         <Box>
             < Button
-
-                mt={4} onClick={(e) => createCheckoutSession(user.uid)}
+                onClick={(e) => createCheckoutSession(user.uid)}
                 backgroundColor="gray.900"
                 _hover={{ bg: "gray.700" }}
                 color="white"
@@ -39,6 +38,25 @@ const Account = () => {
             >
                 Upgrage to Starter
             </Button >
+            <Button
+                onClick={() => {
+                    goToBillingPortal();
+                }}
+                backgroundColor="gray.900"
+                color="white"
+                fontWeight="medium"
+                ml={4}
+                _hover={{ bg: 'gray.700' }}
+                _active={{
+                    bg: 'gray.800',
+                    transform: 'scale(0.95)'
+                }}
+            >
+                View Billing Portal
+            </Button>
+            <Button ml={4} backgroundColor="gray.200" onClick={() => signout()}>
+                Log Out
+            </Button>
         </Box>
     </DashboardShell>
 }
