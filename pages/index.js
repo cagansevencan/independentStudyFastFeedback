@@ -5,7 +5,7 @@ import { getAllFeedback } from '@/lib/db-admin'
 import Feedback from '@/components/Feedback'
 import FeedbackLink from '@/components/FeedbackLink'
 
-
+//Change this
 const SITE_ID = '01aQT9blOXQZ8AUBGmWH'
 
 export async function getStaticProps(context) {
