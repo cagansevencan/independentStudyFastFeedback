@@ -36,11 +36,11 @@ const Account = () => {
                     transform: "scale(0.70)"
                 }}
             >
-                Upgrage to Starter
+                Upgrade to Starter
             </Button >
             <Button
-                onClick={() => {
-                    goToBillingPortal();
+                onClick={async () => {
+                    await goToBillingPortal();
                 }}
                 backgroundColor="gray.900"
                 color="white"
